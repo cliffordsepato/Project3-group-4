@@ -48,28 +48,28 @@ def cases():
     """Return a list of daily case information in 2021 for all countries"""
     # Query all cases
     results = pd.read_sql(f"SELECT * FROM cases WHERE \"Date_reported\" BETWEEN '2021-12-31' AND '2021-12-31'", connection)
-    return Response(results.to_json(orient="records",lines=True), mimetype='application/json')
+    return Response(results.to_json(orient="records"), mimetype='application/json')
 
 @app.route("/country_metadata")
 def country_metadata():
     """Return a list of latest case information for all countries"""
     # Query all cases
     results = pd.read_sql(f"SELECT vaccines.\"Country\", vaccines.\"Alpha-2 code\", vaccines.\"WHO_REGION\", vaccines.\"Latitude\", vaccines.\"Longitude\", vaccines.\"TOTAL_VACCINATIONS\", cases.\"Cumulative_cases\", cases.\"Cumulative_deaths\" FROM vaccines JOIN cases ON vaccines.\"Country\" = cases.\"Country\" WHERE cases.\"Date_reported\" = '2022-01-03'", connection)
-    return Response(results.to_json(orient="records",lines=True), mimetype='application/json')
+    return Response(results.to_json(orient="records"), mimetype='application/json')
 
 @app.route("/region_metadata")
 def region_metadata():
     """Return a list of latest case information for all countries"""
     # Query all cases
     results = pd.read_sql(f"SELECT vaccines.\"WHO_REGION\", sum(vaccines.\"TOTAL_VACCINATIONS\") \"TOTAL_VACCINATIONS\", sum(cases.\"Cumulative_cases\") \"Cumulative_cases\", sum(cases.\"Cumulative_deaths\") \"Cumulative_deaths\" FROM vaccines JOIN cases ON vaccines.\"Country\" = cases.\"Country\" WHERE cases.\"Date_reported\" = '2022-01-03' GROUP BY vaccines.\"WHO_REGION\"", connection)
-    return Response(results.to_json(orient="records",lines=True), mimetype='application/json')
+    return Response(results.to_json(orient="records"), mimetype='application/json')
 
 @app.route("/cases_filtered")
 def cases_filtered():
     """Return a list of daily case information in 2021 for all countries"""
     # Query all cases
     results = pd.read_sql(f"SELECT \"WHO_region\", \"Date_reported\", sum(\"New_cases\") \"New_cases\" FROM cases WHERE \"Date_reported\" BETWEEN '2021-01-01' AND '2021-12-31' GROUP BY \"WHO_region\", \"Date_reported\"", connection)
-    return Response(results.to_json(orient="records",lines=True), mimetype='application/json')
+    return Response(results.to_json(orient="records"), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True)
