@@ -13,7 +13,7 @@
     crossorigin="" />
 
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <meta charset="UTF-8">
         <title>Coronavirus - Visualisation 1</title>
@@ -38,8 +38,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="../visualisation-1/visualisation-1.html">Covid Map</a>
-                  <a class="dropdown-item" href="../visualisation-2/visualisation-2.html">Visualisation 2</a>
-                  <a class="dropdown-item" href="../visualisation-3/visualisation-3.html">Visualisation 3</a>
+                  <a class="dropdown-item" href="../visualisation-2/visualisation-2.html">Daily Information</a>
+                  <a class="dropdown-item" href="../visualisation-3/visualisation-3.html">Highest Figures</a>
                   <a class="dropdown-item" href="http://127.0.0.1:5000/">API</a>
                 </div>
             </li>
@@ -49,6 +49,12 @@
         </ul>
     </div>
   </nav>
+
+  <div id="dailycases"></div>
+  <div id="dailydeaths"></div>
+  <script src="data.js"></script>
+  <script src="plots.js"></script>
+
 </body>
 
 </html>

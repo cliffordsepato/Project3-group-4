@@ -1,24 +1,33 @@
 console.log(data);
 
-// Greek god names
-names = data.map(function (row){
-  return row.WHO_REGION
-});
-
-// Trace for the Greek Data
+// Trace for the Roman Data
 let trace1 = {
-    x: data.map(row => row.WHO_REGION),
-    y: data.map(row => row.TOTAL_VACCINATIONS),
-    type: "bar"
-  };
-
+    y: data.map(row => row.New_cases),
+    x: data.map(row => row.Date_reported),
+    type: "scatter"
+};
 // Data trace array
 let traceData = [trace1];
-
-// Apply the group barmode to the layout
+// Apply title to the layout
 let layout = {
-  title: "Greek gods search results"
+  title: "Daily Case Information"
 };
+// Render the plot
+Plotly.newPlot("dailycases", traceData, layout);
 
-// Render the plot to the div tag with id "plot"
-Plotly.newPlot("plot", traceData, layout);
+
+
+// Trace for the Roman Data
+let trace2 = {
+  y: data.map(row => row.New_deaths),
+  x: data.map(row => row.Date_reported),
+  type: "scatter"
+};
+// Data trace array
+let traceData2 = [trace2];
+// Apply title to the layout
+let layout2 = {
+title: "Daily Death Information"
+};
+// Render the plot
+Plotly.newPlot("dailydeaths", traceData2, layout2);

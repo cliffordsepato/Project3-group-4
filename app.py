@@ -68,8 +68,8 @@ def region_metadata():
 def cases_filtered():
     """Return a list of daily case information in 2021 for all countries"""
     # Query all cases
-    results = pd.read_sql(f"SELECT \"WHO_region\", \"Date_reported\", sum(\"New_cases\") \"New_cases\" FROM cases WHERE \"Date_reported\" BETWEEN '2021-01-01' AND '2021-12-31' GROUP BY \"WHO_region\", \"Date_reported\"", connection)
-    return Response(results.to_json(orient="records"), mimetype='application/json')
+    results = pd.read_sql(f"SELECT \"WHO_region\", \"Date_reported\", sum(\"New_cases\") \"New_cases\", sum(\"New_deaths\") \"New_deaths\" FROM cases WHERE \"Date_reported\" BETWEEN '2021-01-01' AND '2021-12-31' GROUP BY \"WHO_region\", \"Date_reported\" ORDER BY \"Date_reported\"", connection)
+    return Response(results.to_json(orient="records", date_format="iso"), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True)
