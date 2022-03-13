@@ -6,14 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Coronavirus - Map</title>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <meta charset="UTF-8">
         <title>Coronavirus - Visualisation 1</title>
@@ -39,7 +35,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="../visualisation-1/visualisation-1.html">Covid Map</a>
                     <a class="dropdown-item" href="../visualisation-2/visualisation-2.html">Visualisation 2</a>
-                    <a class="dropdown-item" href="../visualisation-3/visualisation-3.html">Visualisation 3</a>
+                    <a class="dropdown-item" href="../visualisation-3/visualisation-3.html">Highest Figures</a>
                     <a class="dropdown-item" href="http://127.0.0.1:5000/">API</a>
                 </div>
             </li>
@@ -49,6 +45,13 @@
         </ul>
     </div>
   </nav>
+
+  <div id="topcases"></div>
+  <div id="topdeaths"></div>
+  <div id="topvaccines"></div>
+  <script src="data.js"></script>
+  <script src="plots.js"></script>
+
 </body>
 
 </html>
